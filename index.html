@@ -172,6 +172,59 @@
   .topics-note{margin-top:22px;font-size:0.92rem;color:var(--ink-soft);font-family:'IBM Plex Mono';letter-spacing:0.02em;}
   .topics-note b{color:var(--highway);}
 
+  /* ===== Speakers ===== */
+  .speakers-lead{
+    display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:22px;
+  }
+  .speaker-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; box-shadow:var(--shadow); display:flex; gap:20px; align-items:center;
+  }
+  .speaker-card.lead{padding:30px;}
+  .speaker-photo{
+    flex-shrink:0; border-radius:50%; object-fit:cover; background:var(--sky-deep);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .speaker-card.lead .speaker-photo{width:104px;height:104px;}
+  .speaker-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .speaker-initials{
+    width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+    font-family:'Barlow Condensed';font-weight:700;color:#fff;
+  }
+  .speaker-card.lead .speaker-initials{font-size:2.1rem;}
+  .speaker-info{min-width:0;}
+  .speaker-eyebrow{font-family:'IBM Plex Mono';font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--route);font-weight:600;margin-bottom:4px;display:block;}
+  .speaker-name{font-family:'Barlow Condensed';font-weight:700;line-height:1.1;color:var(--navy);}
+  .speaker-card.lead .speaker-name{font-size:1.7rem;}
+  .speaker-role{color:var(--ink-soft);font-size:0.88rem;margin-top:4px;line-height:1.4;}
+  .speaker-org{color:var(--ink);font-weight:600;font-size:0.88rem;}
+  .speaker-link{
+    display:inline-flex; align-items:center; gap:5px; margin-top:10px;
+    font-family:'IBM Plex Mono'; font-size:0.72rem; letter-spacing:0.04em;
+    color:var(--route); text-decoration:none; font-weight:600;
+    border-bottom:1px solid transparent;
+  }
+  .speaker-link:hover{border-bottom-color:var(--route);}
+  .speakers-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:2px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+  }
+  .speakers-grid .speaker-card{
+    border-radius:0; box-shadow:none; border:none; padding:22px 18px; flex-direction:column;
+    align-items:flex-start; text-align:left; gap:12px;
+  }
+  .speakers-grid .speaker-photo{width:64px;height:64px;}
+  .speakers-grid .speaker-initials{font-size:1.15rem;}
+  .speakers-grid .speaker-name{font-size:1.15rem;}
+  @media (max-width:900px){
+    .speakers-lead{grid-template-columns:1fr;}
+    .speakers-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .speakers-grid{grid-template-columns:1fr;}
+    .speaker-card{flex-direction:column;align-items:flex-start;text-align:left;}
+  }
+
   /* ===== Day tabs ===== */
   .day-tabs{display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
   .day-tab{
@@ -284,6 +337,7 @@
       <div class="nav-brand-text">RIDOT<span>AI SYMPOSIUM · PEER EXCHANGE</span></div>
     </div>
     <div class="nav-links">
+      <a href="#speakers">Speakers</a>
       <a href="#topics">Key Topics</a>
       <a href="#program">Program</a>
       <a href="#logistics">Session Format</a>
@@ -310,6 +364,19 @@
   </div>
   <div class="roadline"></div>
 </header>
+
+<section id="speakers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Featured Voices</span>
+      <h2>Speakers</h2>
+      <p>Federal, state, academic, and industry leaders shaping how AI meets the road — moderators, panelists, and presenters across both days.</p>
+    </div>
+
+    <div class="speakers-lead" id="speakers-lead"></div>
+    <div class="speakers-grid" id="speakers-grid"></div>
+  </div>
+</section>
 
 <section id="topics" class="bg-sky">
   <div class="wrap">
@@ -419,6 +486,59 @@
 </footer>
 
 <script>
+const SPEAKER_COLORS = ["#0a2c4d","#0f4c86","#2f7cc4","#1f6f78","#4a5b78","#5b98d1"];
+function initials(name){
+  const clean = name.replace(/^Prof\.\s*/,"");
+  const parts = clean.split(" ").filter(Boolean);
+  return ((parts[0]||"")[0] + (parts[parts.length-1]||"")[0]).toUpperCase();
+}
+function speakerPhoto(s, idx){
+  if(s.photo){ return `<img src="${s.photo}" alt="${s.name}" loading="lazy">`; }
+  const color = SPEAKER_COLORS[idx % SPEAKER_COLORS.length];
+  return `<div class="speaker-initials" style="background:${color}">${initials(s.name)}</div>`;
+}
+function speakerCard(s, idx, lead){
+  return `<div class="speaker-card${lead ? ' lead':''}">
+    <div class="speaker-photo">${speakerPhoto(s, idx)}</div>
+    <div class="speaker-info">
+      ${lead ? `<span class="speaker-eyebrow">${s.eyebrow}</span>` : ''}
+      <div class="speaker-name">${s.name}</div>
+      <div class="speaker-role">${s.role ? s.role + ' · ' : ''}<span class="speaker-org">${s.org}</span></div>
+      ${s.link ? `<a class="speaker-link" href="${s.link}" target="_blank" rel="noopener">${s.linkLabel || 'LinkedIn'} →</a>` : ''}
+    </div>
+  </div>`;
+}
+
+const LEAD_SPEAKERS = [
+  {name:"Sean McMaster", role:"Administrator", org:"FHWA", eyebrow:"Opening Keynote — Day 1",
+   photo:"https://highways.fhwa.dot.gov/sites/fhwa.dot.gov/files/inline-images/McMaster-Sean-Official-Photo-2025.jpg",
+   link:"https://www.linkedin.com/in/sean-mcmaster-9867aab2"},
+  {name:"Seval Oz", role:"Assistant Secretary for Research & Technology", org:"USDOT", eyebrow:"Opening Keynote — Day 2",
+   photo:"https://www.transportation.gov/sites/dot.gov/files/styles/cke_media_resize_small/public/2026-05/Seval%20Oz%20Official%20Portrait%20Hi%20Res.jpg?itok=Z-vep6Ro",
+   link:"https://www.linkedin.com/in/sevaloz/"}
+];
+
+const OTHER_SPEAKERS = [
+  {name:"Sophie Abo", org:"USDOT ITS-JPO (Volpe Center)", link:"https://www.linkedin.com/in/sophieabo/"},
+  {name:"Gregory Ciparelli", org:"CT DOT", link:"https://www.linkedin.com/in/gregory-ciparelli-0322b319a/"},
+  {name:"Pam Cotter", org:"RIDOT", link:"https://www.linkedin.com/in/prcotter/"},
+  {name:"Matt Cuddy", org:"VOLPE (USDOT ITS-JPO)", link:"https://www.linkedin.com/in/mattcuddy/"},
+  {name:"Dan DiBiasio", org:"RIDOT", link:"https://www.linkedin.com/in/daniel-dibiasio-62b189105/"},
+  {name:"Patricia Hendren", org:"TETC", link:"https://www.linkedin.com/in/trish-hendren-transportation/"},
+  {name:"Katherine Kortum", org:"TRB", link:"https://www.linkedin.com/in/katherine-kortum-phd-pe-mba-94530410/"},
+  {name:"Charles Major", org:"Mass DOT", link:"https://www.linkedin.com/in/charles-major-41502473/"},
+  {name:"Hyun-A Park", org:"Spy Pond Partners, LLC", link:"https://www.linkedin.com/in/hyun-a-park-9106551/"},
+  {name:"John Preiss", org:"RIDOT", link:"https://www.linkedin.com/in/john-preiss-pe-pmp-9b0139bb/"},
+  {name:"Giri Venkiteela", org:"NJ DOT", link:"https://www.linkedin.com/in/giri-venkiteela-a375261b/"},
+  {name:"Jennifer Volkening", org:"Utah DOT", link:"https://connect.udot.utah.gov/about-us/technology-innovation/", linkLabel:"UDOT bio"},
+  {name:"Kristin White", org:"Google", link:"https://www.linkedin.com/in/kristinrwhite/"},
+  {name:"Prof. Jinhua Zhao", org:"MIT", link:"https://www.linkedin.com/in/jinhuazhao",
+   photo:"https://static.wixstatic.com/media/29d096_086ca369ed434b47a3372465d7c4a50b~mv2.jpg/v1/fill/w_185,h_198,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/29d096_086ca369ed434b47a3372465d7c4a50b~mv2.jpg"}
+];
+
+document.getElementById('speakers-lead').innerHTML = LEAD_SPEAKERS.map((s,i)=>speakerCard(s,i,true)).join('');
+document.getElementById('speakers-grid').innerHTML = OTHER_SPEAKERS.map((s,i)=>speakerCard(s,i,false)).join('');
+
 const DATA = {
   1: [
     {time:"8:00 AM", type:"general", label:"Registration", title:"Welcome Coffee &amp; Check-in", desc:[]},
