@@ -416,8 +416,8 @@
     </div>
 
     <div class="day-tabs">
-      <button class="day-tab active" data-day="1" onclick="showDay(1)">Day 1 <span>Tue, Aug 19 · Foundations, Safety, and System Performance</span></button>
-      <button class="day-tab" data-day="2" onclick="showDay(2)">Day 2 <span>Wed, Aug 20 · Asset Management, Planning, and Future Strategy</span></button>
+      <button class="day-tab active" data-day="1" onclick="showDay(1)">Day 1 <span>Wed, Aug 19 · Foundations, Safety, and System Performance</span></button>
+      <button class="day-tab" data-day="2" onclick="showDay(2)">Day 2 <span>Thu, Aug 20 · Asset Management, Planning, and Future Strategy</span></button>
     </div>
 
     <p id="day1-intro" class="day-intro">Day 1 focuses on the current state of AI implementation, addressing critical areas like road safety and optimizing system performance (ITS and mobility). MC: Pam Cotter and/or Dan DiBiasio.</p>
@@ -460,6 +460,7 @@
         <h4 class="spaced">Spy Pond Partners</h4>
         <ul>
           <li>Hyun-A Park</li>
+          <li>Frances Harrison</li>
         </ul>
       </div>
     </div>
@@ -520,13 +521,14 @@ const OTHER_SPEAKERS = [
   {name:"Laura Chace", org:"ITS America", link:"https://www.linkedin.com/in/laurademeochace/", photo: "pics/Laura-Chase.png"},
   {name:"Gregory Ciparelli", org:"CT DOT", link:"https://www.linkedin.com/in/gregory-ciparelli-0322b319a/", photo: "pics/Gregory-Ciparelli.jpg"},
   {name:"Pam Cotter", org:"RIDOT", link:"https://www.linkedin.com/in/prcotter/", photo: "pics/Pam-Cotter.jpg"},
+  {name:"Robert Rocchio", org:"RIDOT", link:"https://www.linkedin.com/in/robert-rocchio-b8889425/", photo: "pics/Robert-Rocchio.jpg"},
   {name:"Matt Cuddy", org:"VOLPE (USDOT ITS-JPO)", link:"https://www.linkedin.com/in/mattcuddy/", photo: "pics/Matt-Cuddy.jpg"},
   {name:"Matthew Deal", org:"ESRI", link:"https://www.linkedin.com/in/msdeal/", photo: "pics/Matthew-Deal.jpg"},
   {name:"Dan DiBiasio", org:"RIDOT", link:"https://www.linkedin.com/in/daniel-dibiasio-62b189105/"},
   {name:"Lawrence Dwyer", org:"AASHTO", link:"https://www.linkedin.com/in/lawrence-dwyer-b56902288/", photo: "pics/Lawrence-Dwyer.jpg"},
   {name:"Scott Gausland", org:"RIDOT", link:"https://www.linkedin.com/in/scott-gausland-74143785/", photo: "pics/Scott-Gausland.jpg"},
   {name:"Donovan Guin", org:"IBM", link:"https://www.linkedin.com/in/dguin/", photo: "pics/Donovan-Guin.jpg"},
-  {name:"Thomas Gruenstaeudl", org:"ASFINAG", link:"https://www.linkedin.com/in/thomas-gr%C3%BCnst%C3%A4udl-881409136/", photo: "pics/Thomas-Grun.png"},
+  {name:"Thomas Gruenstaeudl", org:"ASFINAG", link:"", photo: "pics/Thomas-Grun.png"},
   {name:"Arnulf Hagen", org:"AIDALOS", link:"https://www.linkedin.com/in/arnulfhagen/", photo: "pics/Arnulf-Hagen.jpg"},
   {name:"Patricia Hendren", org:"TETC", link:"https://www.linkedin.com/in/trish-hendren-transportation/", photo: "pics/Patricia-Hendren.jpg"},
   {name:"Scott Hensley", org:"IBM", link:"https://www.linkedin.com/in/scottphensley/", photo: "pics/Scott-Hensley.jpg"},
@@ -539,7 +541,7 @@ const OTHER_SPEAKERS = [
   {name:"Hyun-A Park", org:"Spy Pond Partners, LLC", link:"https://www.linkedin.com/in/hyun-a-park-9106551/", photo: "pics/Hyun-A-Park.jpg"},
   {name:"John Preiss", org:"RIDOT", link:"https://www.linkedin.com/in/john-preiss-pe-pmp-9b0139bb/", photo: "pics/John-Preiss.png"},
   {name:"Lisa Randall", org:"USDOT", link:"https://www.linkedin.com/in/lisa-randall-097b6162/", photo: "pics/Lisa-Randall.png"},
-  {name:"Jocelyn Stein", org:"MnDOT", link:" https://www.linkedin.com/in/jocelyn-stein-pmp-4080755/", photo: "pics/Jocelyn-Stein-2.png"},
+  {name:"Jocelyn Stein", org:"MnDOT", link:" https://www.linkedin.com/in/jocelyn-stein-pmp-4080755/", photo: "pics/Jocelyn-Stein.png"},
   {name:"Grace Sammartino", org:"ESRI", link:"https://www.linkedin.com/in/grsamm/", photo: "pics/Grace-Sammartino.jpg"},
   {name:"Robert Sheehan", org:"FHWA", link:"https://www.linkedin.com/in/robert-sheehan-4343523/", photo: "pics/Robert-Sheehan.png"},
   {name:"Mike Snodgrass", org:"Google", link:"https://www.linkedin.com/in/misnodgrass/", photo: "pics/Mike-Snodgrass.jpg"},
@@ -547,9 +549,9 @@ const OTHER_SPEAKERS = [
   {name:"Derek Torrey", org:"FHWA", link:"https://www.linkedin.com/in/derektorrey/", photo: "pics/Derek-Torrey-2.png"},
   {name:"Giri Venkiteela", org:"NJ DOT", link:"https://www.linkedin.com/in/giri-venkiteela-a375261b/", photo: "pics/Gri-Venkiteela.jpg"},
   {name:"Jennifer Volkening", org:"Utah DOT", link:"https://www.linkedin.com/in/jennifer-volkening-4ba8751/", photo: "pics/Jennifer-Volkening-2.jpg"},
-  {name:"Alexander Walcher", org:"ASFINAG", link:"https://www.linkedin.com/in/alexander-walcher-978051153/", photo: "pics/Alexander-Walcher.jpg"},
-  {name:"Christos Xenophontos", org:"URI", link:"https://www.linkedin.com/in/christos-xenophontos-29b21914/", photo: "pics/Christos-Xeno.jpg"},
-  {name:"Henry Young", org:"NEIT", link:"https://www.linkedin.com/in/henry-young-48b58115/", photo: "pics/Henry-Young.png"},
+  {name:"Alexander Walcher", org:"ASFINAG", link:"", photo: "pics/Alexander-Walcher.jpg"},
+  {name:"Christos Xenophontos", org:"RIDOT", link:"https://www.linkedin.com/in/christos-xenophontos-29b21914/", photo: "pics/Christos-Xeno.jpg"},
+  {name:"Henry Young", org:"NEIT", link:"", photo: "pics/Henry-Young.png"},
   {name:"Prof. Jinhua Zhao", org:"MIT", link:"https://www.linkedin.com/in/jinhuazhao", photo:"https://static.wixstatic.com/media/29d096_086ca369ed434b47a3372465d7c4a50b~mv2.jpg/v1/fill/w_185,h_198,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/29d096_086ca369ed434b47a3372465d7c4a50b~mv2.jpg"}
 ];
 
@@ -595,7 +597,7 @@ const DATA = {
     {time:"8:00 AM", type:"general", label:"Registration", title:"Welcome Coffee &amp; Check-in", desc:["Sponsored by NEIT"]},
     {time:"8:45 AM", type:"general", label:"Greetings &amp Welcoming Remarks", title:"", speakers: ["Henry Young, NEIT"], desc: []},
     {time:"9:00 AM", type:"keynote", label:"Keynote &amp; Fireside — Future Vision", title:"Mobility 2040: AI's Role in Next-Gen Transport",
-      moderator:"Pamela Cotter, RIDOT or Christos Xenophontos, RIDOT", speakers:["Seval Oz, Assistant Secretary for Research &amp; Technology (USDOT)"],
+      moderator:"Robert Rocchio, RIDOT or Christos Xenophontos, RIDOT", speakers:["Seval Oz, Assistant Secretary for Research &amp; Technology (USDOT)"],
       desc:["This future-focused keynote and fireside chat will look ahead to Mobility 2040 and the disruptive technologies, from connected and autonomous vehicles to AI-orchestrated multimodal networks, that will define the next generation of transportation.",
             "The fireside chat will further explore AI&#39;s foundational role in managing increasingly complex mobility ecosystems and will challenge attendees to think beyond incremental improvements toward a long-term vision for how AI can reshape statewide transportation planning and operations over the next two decades."],
       format:"5' Introduction · 10–15' Keynote · 25–30' Fireside chat"},
@@ -605,7 +607,7 @@ const DATA = {
       note:"Planning notes (tentative): Federal — USDOT AI Planning and Design (AI TPD) Initiative, speakers likely from the US Volpe Center. State — Giri Venkiteela, NJDOT, on AI scenario modeling for systems planning. Private — ESRI. National — possibly Lawrence Dwyer, AASHTO."},
     {time:"10:45 AM", type:"break", label:"Break", title:"Coffee Break", desc:[]},
     {time:"11:00 AM", type:"technical", label:"Technical Session 4", title:"AI in Asset Management: Predictive Maintenance and Inspection",
-      moderator:"John Preiss, RIDOT", speakers:["Donovan Guin &amp; Scott Hensley, IBM","Arnulf Hagen, AIDALOS","Mehrshad Amini, URI"],
+      moderator:"", speakers:["Donovan Guin &amp; Scott Hensley, IBM","Arnulf Hagen, AIDALOS","Mehrshad Amini, URI"],
       desc:["Presenters in this session will cover how AI is facilitating the shifting from reactive repairs to predictive maintenance and how computer vision and machine learning are automating infrastructure inspection and maintenance planning.",
             "The session will cover AI-enabled automated condition assessments, coupled with machine learning models that prioritize and optimize maintenance schedules based on condition and risk—extending asset life while reducing inspection costs and field labor demands."]},
     {time:"12:00 PM", type:"break", label:"Lunch & Networking", title:"A Bridge to the Future", note:"Sponsored by IBM", desc:["Sponsored by IBM - Harmonizing mobility, infrastructure and economic development"]},
@@ -619,7 +621,7 @@ const DATA = {
             "Presenters will discuss methods for cleaning, aligning, and integrating these datasets, and demonstrate how fused data can generate comprehensive insights into network performance, travel patterns, and user behavior that no single data source could reveal on its own."]},
     {time:"3:15 PM", type:"break", label:"Break", title:"Coffee Break", desc:[]},
     {time:"3:30 PM", type:"roundtable", label:"Peer Roundtable 2", title:"AV and AI Integration: Impacts to Existing Infrastructure",
-      moderator:"Katherine Kortum, TRB", speakers:["Matt Cuddy, VOLPE","Rajpeet S. Khangura, Caltrans", "Christos S. Xenophontos, RIDOT"],
+      moderator:"Lawrence Dwyer, AASHTO", speakers:["Matt Cuddy, VOLPE","Rajpeet S. Khangura, Caltrans", "Christos S. Xenophontos, RIDOT"],
       desc:["A practical session on AV and AI integration, exploring the infrastructure implications of autonomous vehicle and AI integration — data-sharing standards, V2X communications, cloud-edge processing, smart pavement markings, and real-time HD mapping."]},
     {time:"4:30 PM", type:"general", label:"Closing", title:"Conference Wrap-Up &amp; Closing Note",
       speakers:["Hyun-A Park","Pam Cotter (Closing)"], desc:["Key takeaways from Day 2, next steps, and closing remarks."]}
