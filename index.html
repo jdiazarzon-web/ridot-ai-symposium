@@ -73,6 +73,16 @@
   border-bottom-color:var(--route);
 }  
 
+.stop-title-link{
+  color:inherit; text-decoration:none;
+  border-bottom:1.5px dashed;
+  border-bottom-color:var(--highway);
+  transition:border-color .15s;
+}
+.stop-title-link:hover{
+  border-bottom-color:var(--highway);
+}
+
   /* ===== Nav ===== */
   .nav{
     position:sticky; top:0; z-index:40;
@@ -633,7 +643,7 @@ const DATA = {
       desc:["Technical Session 2 will deep dive into how AI is optimizing Intelligent Transportation Systems (ITS) and mobility networks. Speakers will cover adaptive traffic signal control that responds to real-time conditions, predictive congestion management that anticipates bottlenecks before they form, and machine learning applications that improve the efficiency, reliability, and rider experience of shared and autonomous mobility services.",
             "The session will highlight how these tools can be integrated into existing ITS infrastructure with measurable performance gains."]},
     {time:"2:15 PM", type:"case", label:"Case Study Showcase 1", title:"Real-World AI Deployment: Lessons Learned from US and International AI Deployments",
-      moderator:"Patricia Hendren, TETC", speakers:["Thomas Gruenstaeudl, ASFINAG (Austria)","Jennifer Volkening, Utah DOT","Jinhua Zhao, MIT"],
+      moderator:"Patricia Hendren, TETC", pres:"pres/Thomas-Gru.pdf", speakers:["Thomas Gruenstaeudl, ASFINAG (Austria)","Jennifer Volkening, Utah DOT","Jinhua Zhao, MIT"],
       desc:["A showcase of real-world lessons from transportation agencies that have moved AI projects from pilot to implementation. Presenters will share case studies that cover project scope, implementation challenges, procurement and vendor management, measured outcomes, and lessons learned and will share their view on what successful AI deployment looks like and what pitfalls to avoid."]},
     {time:"3:15 PM", type:"break", label:"Break", title:"Coffee Break", desc:[]},
     {time:"3:30 PM", type:"roundtable", label:"Peer Roundtable 1", title:"Getting Started: Building an AI Strategy",
@@ -700,7 +710,7 @@ function render(dayNum){
         <div class="stop-top">
           <div>
             <span class="pill ${PILL_CLASS[s.type]}">${s.label}</span>
-            <h3 style="margin-top:10px;">${s.title}</h3>
+            <h3 style="margin-top:10px;">${s.pres ? `<a class="stop-title-link" href="${s.pres}" target="_blank" rel="noopener">${s.title}</a>` : s.title}</h3>
           </div>
         </div>
         ${s.moderator ? `<div class="stop-mod"><b>Moderator:</b> ${s.moderator}</div>` : ''}
